@@ -1,0 +1,21 @@
+﻿<ul id="personajes" class="list-group"></ul>
+
+@section Scripts {
+    <script>
+        $(document).ready(function(){
+            const api = "https://apiec2personajes.ddns.net/api/Personajes";
+
+            $.get(api, function (data) {
+                let html = "";
+
+                data.forEach(personaje => {
+                    html += `<li class="list-group-item">
+                    ID: ${personaje.idPersonaje} | Nombre: ${personaje.nombre} | <img src='${personaje.imagen}' width='100' />
+                    </li>`
+                });
+
+                $("#personajes").html(html);
+            });
+        });
+    </script>
+}
